@@ -5,4 +5,8 @@ export const HomeMain = styled.main`
     flex-direction: column;
     align-items: center;
     padding: 15px;
+
+    h1 {
+        margin-bottom: 10px;
+    }
 `;

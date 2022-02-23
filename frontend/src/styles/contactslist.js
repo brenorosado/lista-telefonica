@@ -23,7 +23,7 @@ export const ContactsArticle = styled.article`
                     height: 30px;
                     display: flex;
                     align-items: center;
-
+                    
                     span {
                         margin: 0 5px;
                     }

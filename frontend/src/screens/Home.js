@@ -15,9 +15,11 @@ const Home = () => {
     return (
         <HomeMain>
             <h1>Lista telefônica</h1>
-            {
-                contactsData ? <ContactsList contactsData={contactsData}/> : null
-            }
+            <section>
+                {
+                    contactsData ? <ContactsList contactsData={contactsData}/> : null
+                }
+            </section>
         </HomeMain>
     );
 };
