@@ -1,7 +1,8 @@
 const express = require('express');
 const pool = require('./db/conn');
+const cors = require('cors');
 
-const PORT = 3000;
+const PORT = 3001;
 
 const app = express();
 
@@ -11,12 +12,14 @@ const app = express();
 //     }),
 // );
 
-// app.use(express.json());
+app.use(express.json());
 
 // app.use(express.static('public'));
 
+app.use(cors());
+
 // get all contancts from database
-app.get('/listatelefonica', (req, res) => {
+app.get('/contatos', (req, res) => {
     const query = 'SELECT * FROM lista';
 
     pool.query(query, (err, data) => {
@@ -25,12 +28,12 @@ app.get('/listatelefonica', (req, res) => {
             return;
         };
         
-        res.send(data);
+        res.json({ data });
     });
 });
 
 //get especific contact from database
-app.get('/contact/:id', (req, res) => {
+app.get('/contatos/:id', (req, res) => {
     const query = 'SELECT * FROM lista WHERE ?? = ?';
     const data = ['id', req.params.id];
 
@@ -40,7 +43,7 @@ app.get('/contact/:id', (req, res) => {
             return;
         };
          
-        res.send(data);
+        res.json({ data });
     });
 });
 
