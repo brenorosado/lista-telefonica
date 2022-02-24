@@ -28,8 +28,7 @@ export const ContactsArticle = styled.article`
                         margin: 0 5px;
                     }
                 }
-
-
+                
                 :hover {
                     background-color: #e1e1e1;
                 }
@@ -38,8 +37,24 @@ export const ContactsArticle = styled.article`
     }
 `;
 
+export const DefaultInfo = styled.div`
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+
+    span {
+        margin: 0 5px;
+    }
+
+    :hover {
+        background-color: #e1e1e1;
+    }
+`;
+
 export const IconSpan = styled.span`
-    color: darkblue;
+    color: dodgerblue;
     text-align: center;
     font-size: 25px;
 `;

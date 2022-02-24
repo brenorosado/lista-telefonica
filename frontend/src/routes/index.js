@@ -8,9 +8,9 @@ const ReactRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<Home />} />
                 <Route path='/cadastrar' element={<RegisterContact />} />
                 <Route path='/contatos/:id' element={<Contact />} />
+                <Route path='/' element={<Home />} />
             </Routes>
         </Router>
     );

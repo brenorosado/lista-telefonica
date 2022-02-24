@@ -4,17 +4,22 @@ import axios from 'axios';
 import { phoneMask } from '../utils/phoneMask';
 import { BsPersonCircle, BsFillTelephoneFill } from 'react-icons/bs';
 import { FiAtSign } from 'react-icons/fi';
-import { ContactMain, ImageContainer, InfoContainer, InfoLine, ContactAction } from '../styles/contact';
+import { ContactMain, ImageContainer, InfoContainer, InfoLine, ContactAction, IconSpan } from '../styles/contact';
 
 const Contact = () => {
-    const { id } = useParams();
     const [contactData, setContactData] = useState(null);
+    const { id } = useParams();
 
     useEffect(async () => {
         await axios.get(`http://localhost:3001/contatos/${id}`)
             .then(response => setContactData(response.data.data[0]))
             .catch(error => console.log(error));
     }, []);
+
+    const deleteContact = async (e) => {
+        e.preventDefault();
+        await axios.delete(`http://localhost:3001/contatos/deletar/${contactData.id}`);
+    };
 
     return (
         <ContactMain>
@@ -25,7 +30,7 @@ const Contact = () => {
                             <article>
                                 <ImageContainer>
                                     {
-                                        contactData.image.data[0] ? <img src={contactData.image.data[0]} /> : <span><BsPersonCircle /></span>
+                                        contactData.image ? <img src={contactData.image.data[0]} /> : <IconSpan><BsPersonCircle /></IconSpan>
                                     }
                                 </ImageContainer>
                                 <InfoContainer>
@@ -33,18 +38,22 @@ const Contact = () => {
                                         <span>{contactData.name}</span>
                                     </InfoLine>
                                     <InfoLine>
-                                        <span><FiAtSign /></span>
+                                        <IconSpan><FiAtSign /></IconSpan>
                                         <span>{contactData.email}</span>
                                     </InfoLine>
                                     <InfoLine>
-                                        <span><BsFillTelephoneFill /></span>
+                                        <IconSpan><BsFillTelephoneFill /></IconSpan>
                                         <span>{phoneMask(contactData.phone)}</span>
                                     </InfoLine>
                                 </InfoContainer>
                             </article>
                             <article>
-                                <ContactAction color='dodgerblue'>Editar</ContactAction>
-                                <ContactAction color='red'>Excluir</ContactAction>
+                                <form action='/'>
+                                    <ContactAction type='submit' value="Editar" color='#1e1e1e'/>    
+                                </form>
+                                <form>
+                                    <ContactAction onClick={(e) => deleteContact(e)} type='submit' value="Excluir" color='red'/>
+                                </form>
                             </article>
                         </>
                     ) : null

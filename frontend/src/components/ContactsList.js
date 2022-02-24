@@ -1,26 +1,25 @@
 import React from 'react';
 import { phoneMask } from '../utils/phoneMask';
-import { ContactsArticle, IconSpan } from '../styles/contactslist';
+import { ContactsArticle, IconSpan, DefaultInfo } from '../styles/contactslist';
 import { BsPersonCircle, BsFillTelephoneFill } from 'react-icons/bs';
 import { FiAtSign } from 'react-icons/fi';
+import { generateImageSrc } from '../utils/imageGenerator';
 
 const ContactsList = ({ contactsData }) => {
     console.log(contactsData);
 
     return (
         <ContactsArticle>
-
-
             <ul>
                 {
                     contactsData.length > 0 ? (
                             contactsData.map(item => {
                                 return (
-                                    <li>
+                                    <li key={item.id}>
                                         <a href={`/contatos/${item.id}`}>
                                             <div>
                                                 {
-                                                    item.image.data[0] ? item.image.data[0] : <IconSpan><BsPersonCircle /></IconSpan>
+                                                    item.image ? <img src={`${generateImageSrc(item.image.data)}`}/> : <IconSpan><BsPersonCircle /></IconSpan>
                                                 }
                                                 <span>{item.name}</span>
                                             </div>
@@ -35,7 +34,7 @@ const ContactsList = ({ contactsData }) => {
                                         </a>
                                     </li>
                                 )
-                            })) : (<li><span>Lista telefônica vazia.</span></li>)
+                            })) : (<li><DefaultInfo><span>Lista telefônica vazia.</span></DefaultInfo></li>)
                 }
             </ul>
         </ContactsArticle>

@@ -49,7 +49,7 @@ export const InfoLine = styled.div`
     }
 `;
 
-export const ContactAction = styled.a`
+export const ContactAction = styled.input`
     width: 90px;
     height: 30px;
     display: flex;
@@ -61,8 +61,13 @@ export const ContactAction = styled.a`
     cursor: pointer;
     transition: 0.2s font-size;
     font-size: 15px;
+    border: none;
 
     :hover {
         font-size: 17px;
     }
+`;
+
+export const IconSpan = styled.span`
+    color: dodgerblue;
 `;
