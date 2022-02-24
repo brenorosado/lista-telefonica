@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const RegisterMain = styled.main`
+export const EditMain = styled.main`
     padding-top: 15px;
     display: flex;
     flex-direction: column;

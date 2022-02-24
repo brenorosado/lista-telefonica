@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { phoneMask } from '../utils/phoneMask';
 import { BsPersonCircle, BsFillTelephoneFill } from 'react-icons/bs';
@@ -9,6 +9,7 @@ import { ContactMain, ImageContainer, InfoContainer, InfoLine, ContactAction, Ic
 const Contact = () => {
     const [contactData, setContactData] = useState(null);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(async () => {
         await axios.get(`http://localhost:3001/contatos/${id}`)
@@ -18,7 +19,10 @@ const Contact = () => {
 
     const deleteContact = async (e) => {
         e.preventDefault();
-        await axios.delete(`http://localhost:3001/contatos/deletar/${contactData.id}`);
+        await axios.delete(`http://localhost:3001/contatos/deletar/${contactData.id}`)
+            .then(() => {
+                setTimeout(() => navigate('/'), 50);
+            });
     };
 
     return (
@@ -48,8 +52,11 @@ const Contact = () => {
                                 </InfoContainer>
                             </article>
                             <article>
+                                <form>
+                                    <ContactAction onClick={() => navigate('/')} type='submit' value="Voltar à lista" color='green'/>
+                                </form>
                                 <form action='/'>
-                                    <ContactAction type='submit' value="Editar" color='#1e1e1e'/>    
+                                    <ContactAction onClick={() => navigate(`/contatos/editar/${contactData.id}`)} type='submit' value="Editar" color='#1e1e1e'/>    
                                 </form>
                                 <form>
                                     <ContactAction onClick={(e) => deleteContact(e)} type='submit' value="Excluir" color='red'/>

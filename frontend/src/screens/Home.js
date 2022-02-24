@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ContactsList from '../components/ContactsList';
-import { HomeMain } from '../styles/home';
+import { HomeMain, ButtonsArticle } from '../styles/home';
 import axios from 'axios';
 
 const Home = () => {
@@ -19,6 +19,11 @@ const Home = () => {
                 {
                     contactsData ? <ContactsList contactsData={contactsData}/> : null
                 }
+            </section>
+            <section>
+                <ButtonsArticle>
+                    <a href="/contatos/cadastrar"><span>Adicionar contato</span></a>
+                </ButtonsArticle>
             </section>
         </HomeMain>
     );

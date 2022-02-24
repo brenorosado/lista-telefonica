@@ -50,7 +50,6 @@ app.get('/contatos/:id', (req, res) => {
 //add an contact to database
 app.post('/contatos/cadastrar', (req, res) => {
     const { name, email, phone, image } = req.body;
-    console.log('dadaos que chegaram', name, email, phone, image);
 
     const query = `INSERT INTO lista (??, ??, ??, ??) VALUES (?, ?, ?, ?)`;
     const data = ['name', 'email', 'phone', 'image', name, email, phone, image];
@@ -68,7 +67,6 @@ app.post('/contatos/cadastrar', (req, res) => {
 //delete an contact from database
 app.delete('/contatos/deletar/:id', (req, res) => {
     const id  = req.params.id;
-    console.log('DELETE REQUEST ID = ', id);
 
     const query = `DELETE FROM lista WHERE ?? = ?`;
     const data = ['id', id];
@@ -78,9 +76,26 @@ app.delete('/contatos/deletar/:id', (req, res) => {
             console.log(err);
             return;
         };
+        
+        res.json({ message: `Contato de id ${id} deletado`});
     });
+});
 
-    res.json({ message: `Contato de id ${id} deletado`})
+//update an contact from database
+app.put('/contatos/editar', (req, res) => {
+    const { name, email, phone, image, id } = req.body;
+
+    const query = `UPDATE lista SET ?? = ?, ?? = ?, ?? = ?, ?? = ? WHERE ?? = ?`;
+    const data = ['name', name, 'email', email, 'phone', phone, 'image', image, 'id', id];
+
+    pool.query(query, data, (err) => {
+        if (err) {
+            console.log(err);
+            return;
+        };
+
+        res.json({ message: `Contato de id ${id} atualizado`});
+    })
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

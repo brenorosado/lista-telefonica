@@ -6,7 +6,7 @@ const NavBar = () => {
         <MenuNav>
             <ul>
                 <li><a href="/">Todos contatos</a></li>
-                <li><a href="/cadastrar">Adicionar contato</a></li>
+                <li><a href="/contatos/cadastrar">Adicionar contato</a></li>
             </ul>
         </MenuNav>
     );

@@ -50,8 +50,7 @@ export const InfoLine = styled.div`
 `;
 
 export const ContactAction = styled.input`
-    width: 90px;
-    height: 30px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,12 +58,12 @@ export const ContactAction = styled.input`
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.2s font-size;
+    transition: 0.2s opacity;
     font-size: 15px;
     border: none;
 
     :hover {
-        font-size: 17px;
+        opacity: 0.7;
     }
 `;
 
