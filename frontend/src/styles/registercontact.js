@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from './media';
 
 export const RegisterMain = styled.main`
     padding-top: 15px;
@@ -6,12 +7,24 @@ export const RegisterMain = styled.main`
     flex-direction: column;
     align-items: center;
 
+    h1 {
+        font-size: 30px;
+
+        ${media.tablet`
+            font-size: 36px;
+        `}
+    }
+
     section {
         article{
             form {
                 display: flex;
                 flex-direction: column;
-                width: 600px;
+                width: 100%;
+
+                ${media.tablet`
+                    width: 600px;
+                `}
             }
         }
     }

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { phoneMask } from '../utils/phoneMask';
 import { BsPersonCircle, BsFillTelephoneFill } from 'react-icons/bs';
 import { FiAtSign } from 'react-icons/fi';
-import { ContactMain, ImageContainer, InfoContainer, InfoLine, ContactAction, IconSpan } from '../styles/contact';
+import { ContactMain, ImageContainer, ButtonsContainer, ContactInfoContainer, InfoContainer, InfoLine, ContactAction, IconSpan } from '../styles/contact';
 
 const Contact = () => {
     const [contactData, setContactData] = useState(null);
@@ -31,7 +31,7 @@ const Contact = () => {
                 {
                     contactData ? (
                         <>
-                            <article>
+                            <ContactInfoContainer>
                                 <ImageContainer>
                                     {
                                         contactData.image ? <img src={contactData.image.data[0]} /> : <IconSpan><BsPersonCircle /></IconSpan>
@@ -50,8 +50,8 @@ const Contact = () => {
                                         <span>{phoneMask(contactData.phone)}</span>
                                     </InfoLine>
                                 </InfoContainer>
-                            </article>
-                            <article>
+                            </ContactInfoContainer>
+                            <ButtonsContainer>
                                 <form>
                                     <ContactAction onClick={() => navigate('/')} type='submit' value="Voltar à lista" color='green'/>
                                 </form>
@@ -61,7 +61,7 @@ const Contact = () => {
                                 <form>
                                     <ContactAction onClick={(e) => deleteContact(e)} type='submit' value="Excluir" color='red'/>
                                 </form>
-                            </article>
+                            </ButtonsContainer>
                         </>
                     ) : null
                 }

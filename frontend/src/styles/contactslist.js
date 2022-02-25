@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import media from "./media";
 
 export const ContactsArticle = styled.article`
-    width: 800px;
+    width: 100%;
+
+    ${media.tablet`
+        width: 800px;
+    `}
 
     ul {
         list-style-type: none;
@@ -17,7 +22,13 @@ export const ContactsArticle = styled.article`
                 text-decoration: none;
                 color: black;
                 display: flex;
-                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+
+                    ${media.tablet`
+                        flex-direction: row;
+                        justify-content: space-between;
+                    `}
                 
                 div {
                     height: 30px;

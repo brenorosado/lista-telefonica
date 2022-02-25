@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from './media';
 
 export const HomeMain = styled.main`
     display: flex;
@@ -7,7 +8,11 @@ export const HomeMain = styled.main`
     padding: 15px;
 
     section {
-        width: 800px;
+        width: 100%;
+
+        ${media.tablet`
+            width: 800px;
+        `}
     }
 
     h1 {

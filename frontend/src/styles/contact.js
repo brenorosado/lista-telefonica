@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "./media";
 
 export const ContactMain = styled.main`
     section {
@@ -7,21 +8,20 @@ export const ContactMain = styled.main`
         align-items: center;
         justify-content: center;
         padding: 20px 10px;
-
-        article {
-            width: 600px;
-            display: flex;
-            justify-content: space-evenly;
-        }
     }
 `;
 
 export const ImageContainer = styled.div`
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ${media.tablet`
+        width: 150px;
+        height: 150px;
+    `}
 
     img {
         width: 140px;
@@ -29,7 +29,11 @@ export const ImageContainer = styled.div`
     }
 
     span {
-        font-size: 110px;
+        font-size: 80px;
+
+        ${media.tablet`
+            font-size: 110px;
+        `}
     }
 `;
 
@@ -69,4 +73,28 @@ export const ContactAction = styled.input`
 
 export const IconSpan = styled.span`
     color: dodgerblue;
+`;
+
+export const ContactInfoContainer = styled.article`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    ${media.tablet`
+        width: 600px;
+        flex-direction: row;
+        justify-content: center;
+    `}
+`;
+
+export const ButtonsContainer = styled.article`
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+
+    ${media.tablet`
+        width: 600px;
+        justify-content: space-evenly;
+    `}
 `;
